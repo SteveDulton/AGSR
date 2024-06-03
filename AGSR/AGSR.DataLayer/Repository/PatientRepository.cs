@@ -53,9 +53,9 @@ namespace AGSR.DataLayer.Repository
             await _dbContext.SaveChangesAsync();
         }
 
-        public async Task<Patient> GetPatientByBirthdate(DateTime birthdate)
+        public async Task<IEnumerable<Patient>> GetPatientByBirthdate(DateTime birthdate)
         {
-            return await _dbContext.Set<Patient>().FirstOrDefaultAsync(b => b.BirthDate == birthdate);
+            return await _dbContext.Set<Patient>().Where(b => b.BirthDate == birthdate).AsNoTracking().ToListAsync();
         }
     }
 }

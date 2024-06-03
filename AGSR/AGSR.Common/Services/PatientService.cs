@@ -40,9 +40,9 @@ namespace AGSR.Common.Services
             await _patientRepository.UpdatePatientAsync(ConvertToEntity(dto));
         }
 
-        public async Task<PatientDto> GetPatientByBirthdateAsync(DateTime birthdate)
+        public async Task<IEnumerable<PatientDto>> GetPatientByBirthdateAsync(DateTime birthdate)
         {
-            return ConvertToDto(await _patientRepository.GetPatientByBirthdate(birthdate));
+            return new List<Patient>(await _patientRepository.GetPatientByBirthdate(birthdate)).Select(p => ConvertToDto(p));
         }
 
         private Patient ConvertToEntity(PatientDto dto)

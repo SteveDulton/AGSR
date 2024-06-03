@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AGSR.DataLayer", "AGSR.Data
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AGSR.Common", "AGSR.Common\AGSR.Common.csproj", "{C977079B-AB2C-4DE9-A6C2-08827BFEA628}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AGSR.Console", "AGSR.Console\AGSR.Console.csproj", "{D2CB7321-32A6-414C-8401-50F49BBCCDE1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{C977079B-AB2C-4DE9-A6C2-08827BFEA628}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C977079B-AB2C-4DE9-A6C2-08827BFEA628}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C977079B-AB2C-4DE9-A6C2-08827BFEA628}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2CB7321-32A6-414C-8401-50F49BBCCDE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2CB7321-32A6-414C-8401-50F49BBCCDE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2CB7321-32A6-414C-8401-50F49BBCCDE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2CB7321-32A6-414C-8401-50F49BBCCDE1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

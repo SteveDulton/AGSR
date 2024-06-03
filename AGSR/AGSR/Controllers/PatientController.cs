@@ -48,7 +48,7 @@ namespace AGSR.Controllers
         }
 
         [HttpGet("find/{birthdate}")]
-        public async Task<PatientDto> GetByBirthdateAsync(DateTime birthdate)
+        public async Task<IEnumerable<PatientDto>> GetByBirthdateAsync(DateTime birthdate)
         {
             return await _patientService.GetPatientByBirthdateAsync(birthdate);
         }
