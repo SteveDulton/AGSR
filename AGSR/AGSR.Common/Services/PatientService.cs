@@ -40,17 +40,20 @@ namespace AGSR.Common.Services
             await _patientRepository.UpdatePatientAsync(ConvertToEntity(dto));
         }
 
+        public async Task<PatientDto> GetPatientByBirthdateAsync(DateTime birthdate)
+        {
+            return ConvertToDto(await _patientRepository.GetPatientByBirthdate(birthdate));
+        }
+
         private Patient ConvertToEntity(PatientDto dto)
         {
             return new()
             {
-                Name = new PatientName
-                {
-                    Family = dto.Name.Family,
-                    Given = dto.Name.Given,
-                    Use = dto.Name.Use,
-                    Id = Guid.NewGuid()
-                },
+                Id = dto.Name.Id,
+                Family = dto.Name.Family,
+                FirstName = dto.Name.Given[0],
+                Surname = dto.Name.Given[1],
+                Use = dto.Name.Use,
                 Active = dto.Active,
                 BirthDate = dto.BirthDate,
                 Gender = Enum.Parse<Gender>(dto.Gender)
@@ -63,10 +66,10 @@ namespace AGSR.Common.Services
             {
                 Name = new PatientNameDto
                 {
-                    Family = patient.Name.Family,
-                    Given = patient.Name.Given,
-                    Use = patient.Name.Use,
-                    Id = patient.Name.Id
+                    Family = patient.Family,
+                    Given = new[] { patient.FirstName, patient.Surname },
+                    Use = patient.Use,
+                    Id = patient.Id
                 },
                 Active = patient.Active,
                 BirthDate = patient.BirthDate,

@@ -13,5 +13,7 @@ namespace AGSR.Common.Interfaces
         Task<PatientDto> GetPatientByIdAsync(Guid id);
 
         Task UpdatePatientAsync(PatientDto dto);
+
+        Task<PatientDto> GetPatientByBirthdateAsync(DateTime birthdate);
     }
 }

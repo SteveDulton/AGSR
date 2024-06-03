@@ -15,6 +15,7 @@ namespace AGSR.DataLayer.Repository
 
         public async Task CreatePatientAsync(Patient patient)
         {
+            patient.Id = Guid.NewGuid();
             _dbContext.Set<Patient>().Add(patient);
             await _dbContext.SaveChangesAsync();
         }
@@ -37,17 +38,24 @@ namespace AGSR.DataLayer.Repository
 
         public async Task UpdatePatientAsync(Patient patient)
         {
-            var updatedPatient = await _dbContext.Set<Patient>().FindAsync(patient.Name.Id);
+            var updatedPatient = await _dbContext.Set<Patient>().FindAsync(patient.Id);
 
             _dbContext.Set<Patient>().Entry(updatedPatient).State = EntityState.Modified;
 
-            updatedPatient.Name.Family = patient.Name.Family;
-            updatedPatient.Name.Use = patient.Name.Use;
+            updatedPatient.Family = patient.Family;
+            updatedPatient.FirstName = patient.FirstName;
+            updatedPatient.Surname = patient.Surname;
+            updatedPatient.Use = patient.Use;
             updatedPatient.Active = patient.Active;
             updatedPatient.BirthDate = patient.BirthDate;
             updatedPatient.Gender = patient.Gender;
 
             await _dbContext.SaveChangesAsync();
+        }
+
+        public async Task<Patient> GetPatientByBirthdate(DateTime birthdate)
+        {
+            return await _dbContext.Set<Patient>().FirstOrDefaultAsync(b => b.BirthDate == birthdate);
         }
     }
 }

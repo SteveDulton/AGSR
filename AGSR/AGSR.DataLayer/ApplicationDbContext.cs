@@ -16,7 +16,11 @@ namespace AGSR.DataLayer
         {
             modelBuilder.Entity<Patient>(entity =>
             {
-                entity.HasKey(e => e.Name.Id).HasName("PK__Patient__70DAFC34E9BADC14");
+                entity.HasKey(e => e.Id).HasName("PK__Patient__70DAFC34E9BADC14");
+
+                entity.Property(f => f.Family).IsRequired();
+                
+                entity.Property(b => b.BirthDate).IsRequired();
             });
 
         }

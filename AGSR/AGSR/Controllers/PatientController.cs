@@ -35,7 +35,7 @@ namespace AGSR.Controllers
             await _patientService.CreatePatientAsync(patientDto);
         }
 
-        [HttpPut("{id}")]
+        [HttpPut]
         public async Task UpdateAsync(PatientDto patientDto)
         {
             await _patientService.UpdatePatientAsync(patientDto);
@@ -45,6 +45,12 @@ namespace AGSR.Controllers
         public async Task DeleteAsync(Guid id)
         {
             await _patientService.DeletePatientAsync(id);
+        }
+
+        [HttpGet("find/{birthdate}")]
+        public async Task<PatientDto> GetByBirthdateAsync(DateTime birthdate)
+        {
+            return await _patientService.GetPatientByBirthdateAsync(birthdate);
         }
     }
 }

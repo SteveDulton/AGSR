@@ -13,5 +13,7 @@ namespace AGSR.DataLayer.Repository.IRepository
         Task<IEnumerable<Patient>> GetPatientListAsync();
 
         Task UpdatePatientAsync(Patient patient);
+
+        Task<Patient> GetPatientByBirthdate(DateTime birthdate);
     }
 }
